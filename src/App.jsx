@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./App.css";
 
 const App = () => {
   const [team, setTeam] = useState([]);
@@ -96,34 +97,19 @@ const App = () => {
     }
   };
 
-  const handleRemoveFighter = (fighter) => {
-    setTeam(team.filter((t) => t.id !== fighter.id));
-    setZombieFighters([...zombieFighters, fighter]);
-    setMoney(money + fighter.price);
-  };
-
-  const totalStrength = team.reduce(
-    (total, fighter) => total + fighter.strength,
-    0
-  );
-  const totalAgility = team.reduce(
-    (total, fighter) => total + fighter.agility,
-    0
-  );
-
   return (
     <div>
       <h1>Zombie Fighters</h1>
       <p>Current Money: ${money}</p>
       <ul>
-        {zombieFighters.map((zombieFighter) => (
-          <li key={zombieFighter.id}>
-            <h2>{zombieFighter.name}</h2>
-            <img src={zombieFighter.img} alt={zombieFighter.name} />
-            <p>Price: {zombieFighter.price}</p>
-            <p>Strength: {zombieFighter.strength}</p>
-            <p>Agility: {zombieFighter.agility}</p>
-            <button onClick={() => handleAddFighter(zombieFighter)}>
+        {zombieFighters.map((fighter) => (
+          <li key={fighter.id}>
+            <img src={fighter.img} alt={fighter.name} />
+            <h3>{fighter.name}</h3>
+            <p>Price: {fighter.price}</p>
+            <p>Strength: {fighter.strength}</p>
+            <p>Agility: {fighter.agility}</p>
+            <button onClick={() => handleAddFighter(fighter)}>
               Add to team
             </button>
           </li>
@@ -141,15 +127,10 @@ const App = () => {
               <p>Price: {teamMember.price}</p>
               <p>Strength: {teamMember.strength}</p>
               <p>Agility: {teamMember.agility}</p>
-              <button onClick={() => handleRemoveFighter(teamMember)}>
-                Remove
-              </button>
             </li>
           ))}
         </ul>
       )}
-      <p>Total Strength: {totalStrength}</p>
-      <p>Total Agility: {totalAgility}</p>
     </div>
   );
 };
