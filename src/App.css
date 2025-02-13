@@ -1,5 +1,6 @@
 #root {
   margin: 16px;
+  background-color: black;
 }
 
 ul {
@@ -13,4 +14,22 @@ li {
   padding: 8px;
   border: whitesmoke 3px solid;
   border-radius: 8px;
+  color: white;
+}
+.fighters-list,
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.fighters-list li,
+.team-list li {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  width: 150px; /* Adjust the width as needed */
 }
